@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Socket io</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <button onClick="sendMsg()">Hit Me</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script>
+    const socket = io('http://localhost:3000');
+    // listen for new messages
+    socket.on("message", (data) => {
+      console.log(data);
+    });
+
+    const sendMsg = () => {
+      socket.emit("message", "HELLO WORLD");
+    }
+  </script>
+</body>
+
+</html>
